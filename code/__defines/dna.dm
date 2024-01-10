@@ -14,6 +14,8 @@
 #define MUTATION_SPACERES        9 // Can't be harmed via pressure damage.
 #define MUTATION_SKELETON        10
 
+#define MUTATION_NOCLONE        12
+
 // Other Mutations:
 #define mNobreath      100 // No need to breathe.
 #define mRemote        101 // Remote viewing.
