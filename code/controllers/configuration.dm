@@ -384,7 +384,7 @@
 	var/static/error_msg_delay = 50
 
 	/// Used in chargen for accessory loadout limit. 0 disables loadout, negative allows infinite points.
-	var/static/max_gear_cost = 10
+	var/static/max_gear_cost = 25
 
 	/// Whether players should be allowed to print IC circuits from scripts.
 	var/static/allow_ic_printing = TRUE

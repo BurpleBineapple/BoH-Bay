@@ -1,6 +1,6 @@
 // Branch-specific defines
 #define UNRESTRICTED /datum/mil_branch/civilian, /datum/mil_branch/fleet
-#define SEMIRESTRICTED /datum/mil_branch/marine_corps, /datum/mil_branch/private_security, /datum/mil_branch/soviet
+#define SEMIRESTRICTED /datum/mil_branch/marine_corps, /datum/mil_branch/private_security
 
 // Rank-specific defines
 #define SMC_TROOPERS_ONLY /datum/mil_branch/marine_corps = list(\
@@ -47,35 +47,6 @@
 	/datum/mil_rank/sol/scientist, \
 	)
 
-// Not used so far but will once we have ship
-#define GIAF_LIMITED_RANKS /datum/mil_branch/soviet = list(\
-		/datum/mil_rank/soviet/e1,\
-		/datum/mil_rank/soviet/e1_gnf, \
-		/datum/mil_rank/soviet/e2, \
-		/datum/mil_rank/soviet/e2_gnf, \
-		/datum/mil_rank/soviet/e3, \
-		/datum/mil_rank/soviet/e3_gnf, \
-		/datum/mil_rank/soviet/e4, \
-		/datum/mil_rank/soviet/e4_gnf, \
-		/datum/mil_rank/soviet/e5, \
-		/datum/mil_rank/soviet/w1, \
-		/datum/mil_rank/soviet/o1, \
-		/datum/mil_rank/soviet/o1_gnf, \
-		/datum/mil_rank/soviet/o2, \
-		/datum/mil_rank/soviet/o2_gnf, \
-		/datum/mil_rank/soviet/o3, \
-		/datum/mil_rank/soviet/o3_gnf, \
-		/datum/mil_rank/soviet/o4, \
-		/datum/mil_rank/soviet/o4_gnf, \
-		/datum/mil_rank/soviet/o5, \
-		/datum/mil_rank/soviet/o5_gnf, \
-		/datum/mil_rank/soviet/o6, \
-		/datum/mil_rank/soviet/o6_gnf, \
-		/datum/mil_rank/soviet/o7, \
-		/datum/mil_rank/soviet/o7_gnf, \
-		/datum/mil_rank/soviet/o8, \
-		/datum/mil_rank/soviet/o8_gnf, \
-	)
 //
 ////# OVERRIDES THE DECLARATIONS OF THE CIV BRANCH TO ACCEPT PADV AS PART OF IT #########
 
@@ -104,10 +75,10 @@
 		/datum/mil_branch/civilian,
 		/datum/mil_branch/solgov,
 		/datum/mil_branch/private_security,
-		/datum/mil_branch/army,
+		/datum/mil_branch/scga,
 		/datum/mil_branch/alien,
 		/datum/mil_branch/skrell_fleet,
-		/datum/mil_branch/soviet
+		/datum/mil_branch/iccgn
 	)
 
 	spawn_branch_types = list(
@@ -118,12 +89,13 @@
 		/datum/mil_branch/private_security,
 		/datum/mil_branch/alien,
 		/datum/mil_branch/skrell_fleet,
-		/datum/mil_branch/soviet
+		/datum/mil_branch/iccgn,
+		/datum/mil_branch/scga
 	)
 
 	species_to_branch_blacklist = list(
 		/datum/species/human   = list(/datum/mil_branch/alien, /datum/mil_branch/skrell_fleet),
-		/datum/species/machine = list(/datum/mil_branch/alien, /datum/mil_branch/skrell_fleet, /datum/mil_branch/soviet),
+		/datum/species/machine = list(/datum/mil_branch/alien, /datum/mil_branch/skrell_fleet),
 		/datum/species/vox     = list(
 			/datum/mil_branch/expeditionary_corps,
 			/datum/mil_branch/fleet,
@@ -132,7 +104,8 @@
 			/datum/mil_branch/private_security,
 			/datum/mil_branch/solgov,
 			/datum/mil_branch/skrell_fleet,
-			/datum/mil_branch/soviet
+			/datum/mil_branch/scga,
+			/datum/mil_branch/iccgn
 		)
 	)
 
@@ -143,19 +116,16 @@
 		/datum/species/unathi/yeosa	= list(UNRESTRICTED, SEMIRESTRICTED, /datum/mil_branch/solgov),
 		/datum/species/adherent		= list(/datum/mil_branch/civilian, /datum/mil_branch/solgov),
 		/datum/species/custom		= list(UNRESTRICTED, SEMIRESTRICTED, /datum/mil_branch/solgov),
-		/datum/species/humanathi	= list(UNRESTRICTED, SEMIRESTRICTED, /datum/mil_branch/solgov),
 		/datum/species/tajaran		= list(UNRESTRICTED, SEMIRESTRICTED, /datum/mil_branch/solgov),
  		/datum/species/shapeshifter/promethean	= list(UNRESTRICTED, /datum/mil_branch/solgov, /datum/mil_branch/private_security),
-		/datum/species/plasmasans	= list(/datum/mil_branch/civilian, /datum/mil_branch/solgov),
 		/datum/species/vox			= list(/datum/mil_branch/alien),
-		/datum/species/vox/armalis	= list(/datum/mil_branch/alien)
+		///datum/species/vox/armalis	= list(/datum/mil_branch/alien)
 	)
 
 	species_to_rank_whitelist = list(
 		/datum/species/diona		= list(SOLGOV_NO_SFP),
 		/datum/species/adherent		= list(SOLGOV_NO_SFP),
-		/datum/species/shapeshifter/promethean	= list(SOLGOV_NO_SFP),
-		/datum/species/plasmasans	= list(SOLGOV_NO_SFP)
+		/datum/species/shapeshifter/promethean	= list(SOLGOV_NO_SFP)
 	)
 
 /datum/mil_branch/fleet
@@ -736,232 +706,6 @@
 /datum/mil_rank/civ/foundationadvisor
 	name = "Psionic Advisor"
 	name_short = "PADV"
-
-/*****/
-//Currently not in use, will be used later once we get actual ship that can use these
-
-//The Gilgamesh Independent Armed Forces
-
-/datum/mil_branch/soviet
-	name = "Gilgamesh Independant Armed Forces"
-	name_short = "GIAF"
-	email_domain = "dagon.ucg"
-
-//Without designation (Gilgamesh Army/Marine corps), with designation (Gilgamesh National FLeet)
-
-	rank_types = list(
-		/datum/mil_rank/soviet/e1,
-		/datum/mil_rank/soviet/e1_gnf,
-		/datum/mil_rank/soviet/e2,
-		/datum/mil_rank/soviet/e2_gnf,
-		/datum/mil_rank/soviet/e3,
-		/datum/mil_rank/soviet/e3_gnf,
-		/datum/mil_rank/soviet/e4,
-		/datum/mil_rank/soviet/e4_gnf,
-		/datum/mil_rank/soviet/e5,
-		/datum/mil_rank/soviet/w1,
-		/datum/mil_rank/soviet/o1,
-		/datum/mil_rank/soviet/o1_gnf,
-		/datum/mil_rank/soviet/o2,
-		/datum/mil_rank/soviet/o2_gnf,
-		/datum/mil_rank/soviet/o3,
-		/datum/mil_rank/soviet/o3_gnf,
-		/datum/mil_rank/soviet/o4,
-		/datum/mil_rank/soviet/o4_gnf,
-		/datum/mil_rank/soviet/o5,
-		/datum/mil_rank/soviet/o5_gnf,
-		/datum/mil_rank/soviet/o6,
-		/datum/mil_rank/soviet/o6_gnf,
-		/datum/mil_rank/soviet/o7,
-		/datum/mil_rank/soviet/o7_gnf,
-		/datum/mil_rank/soviet/o8,
-		/datum/mil_rank/soviet/o8_gnf
-	)
-	spawn_rank_types = list(
-		/datum/mil_rank/soviet/e1,
-		/datum/mil_rank/soviet/e1_gnf,
-		/datum/mil_rank/soviet/e2,
-		/datum/mil_rank/soviet/e2_gnf,
-		/datum/mil_rank/soviet/e3,
-		/datum/mil_rank/soviet/e3_gnf,
-		/datum/mil_rank/soviet/e4,
-		/datum/mil_rank/soviet/e4_gnf,
-		/datum/mil_rank/soviet/e5,
-		/datum/mil_rank/soviet/w1,
-		/datum/mil_rank/soviet/o1,
-		/datum/mil_rank/soviet/o1_gnf,
-		/datum/mil_rank/soviet/o2,
-		/datum/mil_rank/soviet/o2_gnf,
-		/datum/mil_rank/soviet/o3,
-		/datum/mil_rank/soviet/o3_gnf,
-		/datum/mil_rank/soviet/o4,
-		/datum/mil_rank/soviet/o4_gnf,
-		/datum/mil_rank/soviet/o5,
-		/datum/mil_rank/soviet/o5_gnf,
-		/datum/mil_rank/soviet/o6,
-		/datum/mil_rank/soviet/o6_gnf,
-		/datum/mil_rank/soviet/o7,
-		/datum/mil_rank/soviet/o7_gnf,
-		/datum/mil_rank/soviet/o8,
-		/datum/mil_rank/soviet/o8_gnf
-	)
-//Gilgamesh National Army (GNA)
-
-/datum/mil_rank/soviet/e1
-	name = "Private"
-	name_short = "PVT"
-	sort_order = 1
-
-
-/datum/mil_rank/soviet/e2
-	name = "Junior Sergeant"
-	name_short = "JSG"
-	sort_order = 2
-
-
-/datum/mil_rank/soviet/e3
-	name = "Sergeant"
-	name_short = "SGT"
-	sort_order = 3
-
-
-/datum/mil_rank/soviet/e4
-	name = "Senior Sergeant"
-	name_short = "SSG"
-	sort_order = 4
-
-
-/datum/mil_rank/soviet/e5
-	name = "Sergeant Major"
-	name_short = "SGM"
-	sort_order = 5
-
-
-/datum/mil_rank/soviet/w1
-	name = "Warrant Officer"
-	name_short = "WRO"
-	sort_order = 6
-
-
-/datum/mil_rank/soviet/o1
-	name = "Lieutenant"
-	name_short = "LFT"
-	sort_order = 7
-
-
-/datum/mil_rank/soviet/o2
-	name = "Captain"
-	name_short = "CPT"
-	sort_order = 8
-
-
-/datum/mil_rank/soviet/o3
-	name = "Major"
-	name_short = "MAJ"
-	sort_order = 9
-
-
-/datum/mil_rank/soviet/o4
-	name = "Colonel"
-	name_short = "COL"
-	sort_order = 10
-
-
-/datum/mil_rank/soviet/o5
-	name = "Major General"
-	name_short = "MJG"
-	sort_order = 11
-
-
-/datum/mil_rank/soviet/o6
-	name = "Colonel General"
-	name_short = "COG"
-	sort_order = 12
-
-
-/datum/mil_rank/soviet/o7
-	name = "General"
-	name_short = "GEN"
-	sort_order = 13
-
-
-/datum/mil_rank/soviet/o8
-	name = "Marshal"
-	name_short = "MAR"
-	sort_order = 14
-
-
-//Gilgamesh National Fleet (GNF)
-/datum/mil_rank/soviet/e1_gnf
-	name = "Seaman"
-	name_short = "SEA"
-	sort_order = 1
-
-
-/datum/mil_rank/soviet/e2_gnf
-	name = "Leading Seaman"
-	name_short = "LSE"
-	sort_order = 2
-
-
-/datum/mil_rank/soviet/e3_gnf
-	name = "Junior Sergeant"
-	name_short = "JSG"
-	sort_order = 3
-
-
-/datum/mil_rank/soviet/e4_gnf
-	name = "Sergeant"
-	name_short = "SGT"
-	sort_order = 4
-
-
-/datum/mil_rank/soviet/o1_gnf
-	name = "Junior Officer"
-	name_short = "JNO"
-	sort_order = 7
-
-
-/datum/mil_rank/soviet/o2_gnf
-	name = "Lieutenant"
-	name_short = "LFT"
-	sort_order = 8
-
-
-/datum/mil_rank/soviet/o3_gnf
-	name = "Captain Lieutenant"
-	name_short = "CLF"
-	sort_order = 9
-
-
-/datum/mil_rank/soviet/o4_gnf
-	name = "Captain 2nd Class"
-	name_short = "CAP2nd"
-	sort_order = 10
-
-
-/datum/mil_rank/soviet/o5_gnf
-	name = "Captain 1st Class"
-	name_short = "CAP1st"
-	sort_order = 11
-
-
-/datum/mil_rank/soviet/o6_gnf
-	name = "Vice Admiral"
-	name_short = "VAM"
-	sort_order = 12
-
-
-/datum/mil_rank/soviet/o7_gnf
-	name = "Admiral"
-	name_short = "ADM"
-	sort_order = 13
-
-
-/datum/mil_rank/soviet/o8_gnf
-	name = "High Admiral"
-	name_short = "HAM"
-	sort_order = 14
 
 //
 //

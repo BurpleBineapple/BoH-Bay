@@ -226,6 +226,10 @@
 #define CULTURE_XENOPHAGE_Q    "Xenophage Queen"
 #define FACTION_XENOPHAGE      "Xenophage Hive"
 
+//Hestia IPC Culture
+#define CULTURE_POSITRONICS    "Positronic Union"
+#define CULTURE_POSITRONICS_GENERIC    "Integrated Positronic Chassis"
+
 //Unathi cultures
 #define FACTION_UNATHI_POLAR        "Polar Clans"
 #define FACTION_UNATHI_DESERT       "Desert Clans"
