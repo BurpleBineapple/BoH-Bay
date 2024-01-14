@@ -19,6 +19,13 @@
 	///Used for generating unique keys for the associated list 'scans'
 	var/next_id = 0
 
+	var/list/map_z = list()
+
+	var/start_x			//Coordinates for self placing
+	var/start_y			//will use random values if unset
+
+	var/sector_flags = OVERMAP_SECTOR_KNOWN//|OVERMAP_SECTOR_IN_SPACE
+
 //Overlay of how this object should look on other skyboxes
 /obj/overmap/proc/get_skybox_representation()
 	return
