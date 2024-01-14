@@ -6,19 +6,12 @@ GLOBAL_LIST_EMPTY(known_overmap_sectors)
 	name = "map object"
 	scannable = TRUE
 
-	var/list/map_z = list()
-
 	var/list/initial_generic_waypoints //store landmark_tag of landmarks that should be added to the actual lists below on init.
 	var/list/initial_restricted_waypoints //For use with non-automatic landmarks (automatic ones add themselves).
 
 	var/list/generic_waypoints = list()    //waypoints that any shuttle can use
 	var/list/restricted_waypoints = list() //waypoints for specific shuttles
 	var/docking_codes
-
-	var/start_x			//Coordinates for self placing
-	var/start_y			//will use random values if unset
-
-	var/sector_flags = OVERMAP_SECTOR_IN_SPACE
 
 	var/hide_from_reports = FALSE
 
@@ -28,6 +21,8 @@ GLOBAL_LIST_EMPTY(known_overmap_sectors)
 	var/list/place_near_main
 
 	var/blob_count = 0
+
+	var/fore_dir = NORTH                //what dir is considered north for the actual map
 
 /obj/overmap/visitable/Initialize()
 	. = ..()

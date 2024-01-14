@@ -136,3 +136,18 @@
 	icon_state = "security"
 	req_access = list(access_brig)
 //
+
+//Anom
+/area/rnd/anom_storage
+	name = "\improper Anomaly LTS"
+	icon_state = "misclab"
+	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
+	req_access = list(access_xenoarch)
+
+/area/rnd/anom_storage/gas
+	name = "\improper LTS Gas Runoff"
+	icon_state = "misclab"
+
+/area/rnd/anom_storage/living
+	name = "\improper Biological LTS"
+	icon_state = "security"

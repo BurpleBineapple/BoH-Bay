@@ -29,7 +29,6 @@ var/global/const/OVERMAP_SPEED_CONSTANT = (1 SECOND)
 	var/list/position = list(0,0)       // position within a tile.
 	var/last_burn = 0                   // worldtime when ship last acceleated
 	var/burn_delay = 1 SECOND           // how often ship can do burns
-	var/fore_dir = NORTH                // what dir ship flies towards for purpose of moving stars effect procs
 
 	/// How much it increases identification process each scan
 	var/base_sensor_visibility = 10
