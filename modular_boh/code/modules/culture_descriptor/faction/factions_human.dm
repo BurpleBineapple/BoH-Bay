@@ -20,7 +20,7 @@
 	economic_power = 1.1
 
 /singleton/cultural_info/faction/scg/smc
-	name = FACTION_SMC
+	name = FACTION_MARINES
 	description = "The Solarian Marine Corp boasts itself as the elite few of the Sol government, \
 	specializing as elite naval infantry and advertised heroes of the Aigaion conflict. \
 	The Marines, while closely associated with the SCG Fleet, maintain an independence in branch and culture from their naval counterparts. \

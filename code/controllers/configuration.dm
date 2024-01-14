@@ -158,7 +158,7 @@
 	var/static/cult_ghostwriter_req_cultists = 10
 
 	/// The number of available character slots
-	var/static/character_slots = 10
+	var/static/character_slots = 30
 
 	/// The number of loadout slots per character
 	var/static/loadout_slots = 3
