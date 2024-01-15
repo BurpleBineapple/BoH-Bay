@@ -6,11 +6,11 @@
 	name = "\improper Bar"
 	icon_state = "bar"
 	sound_env = LARGE_SOFTFLOOR
-	req_access = list(access_bar)
+	req_access = list(access_kitchen)
 
 /area/crew_quarters/bar/storage
 	name = "\improper Service Storage"
-	req_access = list(access_bar, access_kitchen)
+	req_access = list(access_kitchen)
 
 /area/crew_quarters/public_office
 	name = "public_office"
@@ -316,19 +316,13 @@
 	icon_state = "hangar"
 	req_access = list(access_hangar)
 
-/area/command/gunnery
-	name = "\improper Weapon Mounts"
-	icon = 'icons/boh/area.dmi'
-	icon_state = "guntemp"
-	req_access = list(access_gunnery)
-
 /////////
 // Combat
 /////////
 
 /area/command/gunnery
 	name = "\improper Weapon Mounts"
-	icon = 'icons/boh/area.dmi'
+	icon = 'modular_boh/icon/boh/area.dmi'
 	icon_state = "guntemp"
 	req_access = list(access_gunnery)
 
@@ -342,12 +336,10 @@
 
 /area/command/gunnery/missiles/storage
 	name = "\improper Weapon Mounts"
-	icon = 'icons/boh/area.dmi'
 	icon_state = "guntemp"
 
 /area/command/gunnery/missiles/storage/lower
 	name = "\improper Weapon Mounts"
-	icon = 'icons/boh/area.dmi'
 
 /area/command/gunnery/mim
 	name = "\improper Tactical Operations Center"

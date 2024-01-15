@@ -1578,11 +1578,11 @@
 
 // Research
 /area/assembly
-	req_access = list(access_robotics_engineering)
 
 /area/assembly/chargebay
 	name = "\improper Mech Bay"
 	icon_state = "mechbay"
+	req_access = list(access_robotics)
 
 /area/assembly/robotics
 	name = "\improper Robotics Workshop"
