@@ -22,6 +22,8 @@
 	var/datum/sound_token/sound_token
 	var/sound_id
 
+	var/aiming_sound = 'modular_boh/sounds/machines/pdc/pdc_aim.ogg'
+
 	var/dispersion_datum_type = /datum/pdc_dispersion_datum/normal //We use subtypesof to grab all our target datums.
 	var/dispersion_list = list() //Handled in initialize
 
@@ -49,9 +51,10 @@
 		sound_id = "[type]_[sequential_id(/obj/machinery/computer/ship/sensors)]"
 
 	if(intercepting)
+		var/turf/parent_ship_defender = GetConnectedZlevels(get_z(src))
 		var/volume = 15
 		if(!sound_token)
-			sound_token = GLOB.sound_player.PlayLoopingSound(src, sound_id, working_sound, volume = volume, range = 10)
+			sound_token = GLOB.sound_player.PlayLoopingSound(parent_ship_defender, sound_id, working_sound, volume = volume, range = 10, TRUE)
 		sound_token.SetVolume(volume)
 
 	else if(sound_token)
@@ -120,6 +123,10 @@
 
 	if(intercepting)
 		return
+
+	var/turf/parent_ship_aiming = GetConnectedZlevels(get_z(src))
+	if(parent_ship_aiming)
+		playsound(parent_ship_aiming, aiming_sound, 10, FALSE, 0, 0, 0)
 
 	intercepting = TRUE
 
