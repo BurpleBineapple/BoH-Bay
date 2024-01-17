@@ -13,7 +13,7 @@
 		return TRUE
 	return FALSE
 
-/obj/overmap/visitable/ship/proc/get_target(var/target_type)
+/obj/overmap/visitable/ship/proc/get_target(target_type)
 	if(target_type == TARGET_SHIP)
 		if(ship_target && check_target(ship_target))
 			return ship_target
@@ -36,7 +36,7 @@
 
 	return null
 
-/obj/overmap/visitable/ship/proc/set_target(var/target_type, var/obj/overmap/target, var/target_x, var/target_y)
+/obj/overmap/visitable/ship/proc/set_target(target_type, obj/overmap/target, target_x, target_y)
 	if(target_type == TARGET_SHIP)
 		if(target && check_target(target))
 			ship_target = target

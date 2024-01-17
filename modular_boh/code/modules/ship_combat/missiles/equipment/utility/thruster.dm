@@ -1,7 +1,8 @@
 // Very oversimplified engine/booster. It takes a target and instantly adjusts the speed of the projectile to move towards it
 /obj/item/missile_equipment/thruster
 	name = "missile booster"
-	desc = "A simple but powerful and modular booster that can be fitted in most missiles. This one comes with an embedded targeting computer."
+	desc = "A simple but powerful and modular booster that can be fitted in most missiles. This one comes with an embedded targeting computer. <br>\
+	Designed to glide away from the ship with micro-thrusters before activating its booster."
 	icon_state = "target"
 
 	cooldown = 5

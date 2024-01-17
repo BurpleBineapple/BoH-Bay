@@ -7,15 +7,12 @@
 	icon_state = "turret_loaded"
 
 	var/obj/machinery/point_defense/point_defense_computer/mainframe
-	var/obj/machinery/point_defense/ammo_storage/storage
 
 	var/range = 35 //tiles
 	var/cooldown = 1 SECOND
 	var/last_fired
-	var/base_miss_chance = 0
 	var/rotation_speed = 0.25 SECONDS
 	var/intercepting = FALSE
-	var/can_assess_threat = FALSE //PDC system is 2dumb to figure out how threatening a missile is.
 	var/dispersion = 3 //What our bullet spread is - this gets smaller as the missile gets closer.
 
 	var/working_sound = 'modular_boh/sounds/machines/pdc/pdc_fire.ogg'
@@ -26,8 +23,6 @@
 
 	var/dispersion_datum_type = /datum/pdc_dispersion_datum/normal //We use subtypesof to grab all our target datums.
 	var/dispersion_list = list() //Handled in initialize
-
-	var/list/target_list = list() //List of potential targets, iterated over so PDCs target the one with the highest threat.
 
 	id_tag = "default"
 
@@ -42,7 +37,10 @@
 /obj/machinery/point_defense/point_defense_cannon/Destroy()
 	. = ..()
 	mainframe.pdcs -= src
-	storage.pdc = null
+
+/obj/machinery/point_defense/point_defense_cannon/Process()
+	scan_for_targets()
+	update_icon()
 
 /obj/machinery/point_defense/point_defense_cannon/proc/update_sound()
 	if(!working_sound)
@@ -69,13 +67,9 @@
 
 		if(!IM.active)
 			return
-/*
-		if(IM.has_iff())
-			var/missile_iff = IM.get_iff_code()
 
-			if(missile_iff == mainframe.iff_code)
-				continue //This is one of our missiles (or the enemy has figured out our IFF codes), so, we ignore it.
-*/
+		intercept(IM)
+
 /obj/machinery/point_defense/point_defense_cannon/proc/get_sensor_loss_dispersion() //If we've lost sensors on the mainframe, accuracy suffers considerably.
 	var/sensor_strength = mainframe.sensor_integrity
 
@@ -91,13 +85,13 @@
 	if(sensor_strength <= 25)
 		return 3
 
-/obj/machinery/point_defense/point_defense_cannon/proc/space_los(var/target)
+/obj/machinery/point_defense/point_defense_cannon/proc/space_los(target)
 	for(var/turf/T in getline(src,target))
 		if(T.density)
 			return FALSE
 	return TRUE
 
-/obj/machinery/point_defense/point_defense_cannon/proc/switch_dispersion(var/obj/O)
+/obj/machinery/point_defense/point_defense_cannon/proc/switch_dispersion(obj/O)
 	var/dist = get_dist(src, O)
 
 	for(var/datum/pdc_dispersion_datum/D in dispersion_list)
@@ -105,7 +99,7 @@
 		if(dist <= S.distance)
 			dispersion = S.spread
 
-/obj/machinery/point_defense/point_defense_cannon/proc/intercept(var/obj/structure/missile/M)
+/obj/machinery/point_defense/point_defense_cannon/proc/intercept(obj/structure/missile/M)
 	if(inoperable()) //Broken or no power.
 		return
 
@@ -158,17 +152,17 @@
 		intercepting = FALSE
 		return
 
-	if(!storage)
+	if(!mainframe.storage)
 		intercepting = FALSE
 		return
 
-	if(!storage.can_remove_ammo(1))
+	if(!mainframe.can_use_ammo())
 		intercepting = FALSE
 		return
 
 	switch_dispersion(target)
 
-	storage.remove_ammo(1)
+	mainframe.use_ammo()
 
 	dispersion += get_sensor_loss_dispersion()
 

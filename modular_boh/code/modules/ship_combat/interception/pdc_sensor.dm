@@ -1,8 +1,8 @@
-//These don't actually do anything, but if the mainframe looses them then PDC targeting accuracy goes to shit and eventually, stops the pdcs from firing altogether.
+//If the mainframe suffers from sensor loss or damage, interception success chance goes with it.
 
 /obj/machinery/point_defense/point_defense_sensor
-	name = "sensor node"
-	desc = "An advanced sensor node capable of tracking rapidly moving objects, usually mounted in groups on ships for point defense."
+	name = "interception grid node"
+	desc = "An advanced computer, capable of tracking and relaying targets to the 'Bardiche' grid as required."
 	icon_state = "commdish"
 
 	var/obj/machinery/point_defense/point_defense_computer/mainframe

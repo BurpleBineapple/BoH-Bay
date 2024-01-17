@@ -1,5 +1,7 @@
 
 /obj/machinery/point_defense
+	density = 1
+	opacity = 0
 	icon = 'modular_boh/icon/boh/structures/pdc_mainframe.dmi'
 
 /obj/machinery/point_defense/point_defense_computer
@@ -9,14 +11,15 @@
 	A mouthful to be sure, but you'll not care when it saves your life."
 	icon_state = "pdc_mainframe"
 
-	var/list/sensors = list() //Our sensors, generally used for measuring integrity of the PDC network.
-	var/list/pdcs = list() //Our point defense cannons. They're added in the Initialize() call.
+	var/list/sensors = list()	//Our sensors, generally used for measuring integrity of the PDC network.
+	var/list/pdcs = list()		//Our point defense cannons. They're added in the Initialize() call.
+	var/list/storage = list()		//Ammo banks for the ship's defense grid.
 
-	var/max_shots
-	var/shots_left
-	var/sensor_integrity = 100 //This also fucks with targeting accuracy.
-	var/initial_sensors = 0 //num. Basically used to calculate the health of the sensor network.
-	var/iff_code //The IFF code for the ship.
+	var/sensor_integrity = 100			//This also fucks with targeting accuracy.
+	var/initial_sensors = 0				//num. Basically used to calculate the health of the sensor network.
+	var/sensor_loss_warning = FALSE		//If this is true, we've sent word to the crew that the cannons have little chance of intercepting.
+
+	var/alert_sound = 'sound/effects/caution.ogg'
 
 	id_tag = "default"
 
@@ -31,6 +34,11 @@
 			sensors += S
 			S.mainframe = src
 
+	for(var/obj/machinery/point_defense/ammo_storage/A in SSmachines.machinery)
+		if(A.id_tag == id_tag)
+			storage += A
+			A.mainframe = src
+
 	initial_sensors = sensors.len //Set initial_sensors for sensor health comparison. As long as every sensor in the list reports that it's online, sensor integrity is fine.
 
 	update_sensor_status()
@@ -42,8 +50,10 @@
 	. = ..()
 	for(var/obj/machinery/point_defense/point_defense_sensor/M in sensors)
 		M.mainframe = null
-	for(var/obj/machinery/point_defense/point_defense_cannon/pdc in sensors)
+	for(var/obj/machinery/point_defense/point_defense_cannon/pdc in pdcs)
 		pdc.mainframe = null
+	for(var/obj/machinery/point_defense/ammo_storage/A in storage)
+		A.mainframe = null
 
 
 /obj/machinery/point_defense/point_defense_computer/Process()
@@ -98,3 +108,40 @@
 	else
 		var/extra_miss_chance = (100-sensor_integrity) / 2
 		return extra_miss_chance
+
+// Ammo Stuff
+/obj/machinery/point_defense/point_defense_computer/proc/use_ammo()
+	for(var/obj/machinery/point_defense/ammo_storage/A in storage)
+		A.remove_ammo()
+
+/obj/machinery/point_defense/point_defense_computer/proc/can_use_ammo()
+	for(var/obj/machinery/point_defense/ammo_storage/A in storage)
+		A.can_remove_ammo()
+
+// Alerts (message, from, channel)
+/obj/machinery/point_defense/point_defense_computer/proc/interception_complete()
+	GLOB.global_headset.autosay("Target Lost or Intercepted", "Interception Grid", "Command")
+	sleep(3)
+
+	for(var/obj/machinery/point_defense/ammo_storage/A in storage)
+		GLOB.global_headset.autosay("Munition level of BARDICHE grid: [round(A.ammo, 0.1)]%", "Interception Grid", "Command")
+	sleep(6)
+
+	for(var/obj/machinery/point_defense/point_defense_sensor/S in sensors)
+		if(!S.report_status())
+			GLOB.global_headset.autosay("Chance of next interception failure: [round(get_miss_chance(), 0.1)]%", "Interception Grid", "Command")
+
+		if(sensor_loss_warning)//They know that it'll be bad. Don't use the fluff text.
+			GLOB.global_headset.autosay("Chance of next interception failure: [round(get_miss_chance(), 0.1)]%", "BARDICHE On-Board Targeting", "Command")
+
+		else
+			GLOB.global_headset.autosay("Chance of next interception failure: FAILURE TO CONNECT TO GRID", "Interception Grid", "Command")
+			sleep(12)
+			GLOB.global_headset.autosay("Chance of next interception failure: SENSOR GRID LOST", "Interception Grid", "Command")
+			sleep(24)
+			GLOB.global_headset.autosay("EMERGENCY. REVERTING TO ON-BOARD TARGETING.", "BARDICHE Grid Targeting", "Common")
+			sensor_loss_warning = TRUE
+			var/turf/parent_ship_alert = GetConnectedZlevels(get_z(src))
+			if(parent_ship_alert)
+				playsound(parent_ship_alert, alert_sound, 10, FALSE, 0, 0, 0)
+	return
