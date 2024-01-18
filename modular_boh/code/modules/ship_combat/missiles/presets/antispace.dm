@@ -9,3 +9,6 @@
 		/obj/item/missile_equipment/autoarm,
 		/obj/item/missile_equipment/payload/antimissile
 	)
+
+/obj/structure/missile/antispace/armed
+	active = TRUE

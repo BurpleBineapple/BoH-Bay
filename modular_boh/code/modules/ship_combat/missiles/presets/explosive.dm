@@ -9,3 +9,6 @@
 		/obj/item/missile_equipment/autoarm,
 		/obj/item/missile_equipment/payload/explosive
 	)
+
+/obj/structure/missile/he/armed
+	active = TRUE

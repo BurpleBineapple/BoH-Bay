@@ -13,3 +13,6 @@
 
 /obj/structure/missile/void/attackby(obj/item/I, mob/user)// :)
 	return
+
+/obj/structure/missile/void/armed
+	active = TRUE

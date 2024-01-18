@@ -30,3 +30,32 @@
 			walk(src, 0)
 			active = FALSE
 			qdel(src)
+
+/obj/structure/missile/impact/armed
+	active = TRUE
+
+//OP version. Explodes when it runs out of steam, acting as a delayed fuse.
+/obj/structure/missile/impact/super
+	name = "HBM68 missile"
+	overmap_name = "breacher missile"
+	inertia = 12
+
+/obj/structure/missile/impact/super/Bump(var/atom/obstacle)
+	if(!active)
+		return
+
+	if(inertia)
+		if(istype(obstacle, /obj/shield))
+			inertia = 0
+		else
+			qdel(obstacle)
+			inertia--
+
+		if(!inertia)
+			walk(src, 0)
+			active = FALSE
+			explosion(get_turf(src), 4, 8, 12, 16)
+			qdel(src)
+
+/obj/structure/missile/impact/super/armed
+	active = TRUE

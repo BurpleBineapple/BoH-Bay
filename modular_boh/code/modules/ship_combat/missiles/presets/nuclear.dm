@@ -12,3 +12,6 @@
 
 /obj/structure/missile/nuke/attackby(obj/item/I, mob/user)// :)
 	return
+
+/obj/structure/missile/nuke/armed
+	active = TRUE

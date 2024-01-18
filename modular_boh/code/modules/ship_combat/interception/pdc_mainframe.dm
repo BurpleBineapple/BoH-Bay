@@ -90,9 +90,11 @@
 
 /obj/machinery/point_defense/point_defense_computer/proc/update_sensor_status()
 	var/operable_sensors = 0
+
 	for(var/obj/machinery/point_defense/point_defense_sensor/S in sensors)
-		if(!S.report_status())
+		if(!S.is_inoperable())
 			continue
+
 		operable_sensors++
 
 	if(!operable_sensors) //no div by zero errors pls, just stop here.
@@ -128,7 +130,7 @@
 	sleep(6)
 
 	for(var/obj/machinery/point_defense/point_defense_sensor/S in sensors)
-		if(!S.report_status())
+		if(!S.is_inoperable())
 			GLOB.global_headset.autosay("Chance of next interception failure: [round(get_miss_chance(), 0.1)]%", "Interception Grid", "Command")
 
 		if(sensor_loss_warning)//They know that it'll be bad. Don't use the fluff text.

@@ -15,11 +15,11 @@
 	. = ..()
 	mainframe.sensors -= src
 
-/obj/machinery/point_defense/point_defense_sensor/proc/report_status()
+/obj/machinery/point_defense/point_defense_sensor/proc/is_inoperable()
 	if(inoperable())
-		return FALSE
-	else
 		return TRUE
+	else
+		return FALSE
 
 /obj/machinery/point_defense/point_defense_sensor/Process()
 	update_health()

@@ -10,3 +10,6 @@
 		/obj/item/missile_equipment/autoarm,
 		/obj/item/missile_equipment/payload/diffuser
 	)
+
+/obj/structure/missile/diffusive/armed
+	active = TRUE
