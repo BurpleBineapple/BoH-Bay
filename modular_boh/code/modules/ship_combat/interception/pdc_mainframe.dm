@@ -92,7 +92,7 @@
 	var/operable_sensors = 0
 
 	for(var/obj/machinery/point_defense/point_defense_sensor/S in sensors)
-		if(!S.is_inoperable())
+		if(S.is_inoperable())
 			continue
 
 		operable_sensors++

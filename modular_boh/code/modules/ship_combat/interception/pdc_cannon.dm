@@ -6,7 +6,7 @@
 	icon = 'modular_boh/icon/boh/structures/pdc_cannon.dmi'
 	icon_state = "turret_loaded"
 
-	var/obj/machinery/point_defense/point_defense_computer/mainframe
+	var/list/mainframe = list()		//Linked mainframe.
 
 	var/range = 35 //tiles
 	var/cooldown = 1 SECOND
@@ -40,7 +40,8 @@
 
 /obj/machinery/point_defense/point_defense_cannon/Destroy()
 	. = ..()
-	mainframe.pdcs -= src
+	for(var/obj/machinery/point_defense/point_defense_computer/MFC in mainframe)
+		MFC.pdcs -= src
 
 /obj/machinery/point_defense/point_defense_cannon/Process()
 	scan_for_targets()
@@ -82,19 +83,18 @@
 		to_world("<font size='5' color='red'><b>[M] is made a target!</b></font>")
 
 /obj/machinery/point_defense/point_defense_cannon/proc/get_sensor_loss_dispersion() //If we've lost sensors on the mainframe, accuracy suffers considerably.
-	var/sensor_strength = mainframe.sensor_integrity
+	for(var/obj/machinery/point_defense/point_defense_computer/MFS in mainframe)
+		if(MFS.sensor_integrity == 100)
+			return
 
-	if(sensor_strength == 100)
-		return
+		if(MFS.sensor_integrity <= 75)
+			return 1
 
-	if(sensor_strength <= 75)
-		return 1
+		if(MFS.sensor_integrity <= 50)
+			return 2
 
-	if(sensor_strength <= 50)
-		return 2
-
-	if(sensor_strength <= 25)
-		return 3
+		if(MFS.sensor_integrity <= 25)
+			return 3
 
 /obj/machinery/point_defense/point_defense_cannon/proc/space_los(target)
 	for(var/turf/T in getline(src,target))
@@ -111,7 +111,6 @@
 			dispersion = S.spread
 
 /obj/machinery/point_defense/point_defense_cannon/proc/intercept(obj/structure/missile/M)
-	var/sensor_health = mainframe.sensor_integrity
 	if(inoperable()) //Broken or no power.
 		to_world("<font size='5' color='red'><b>[src] is not operable!</b></font>")
 		return
@@ -124,13 +123,14 @@
 		to_world("<font size='5' color='red'><b>[src] is on cooldown!</b></font>")
 		return //Cooldown is in effect.
 
-	if(!mainframe)
-		to_world("<font size='5' color='red'><b>[src] has no mainframe!</b></font>")
-		return //shit just got real, the mainframe's gone.
+	for(var/obj/machinery/point_defense/point_defense_computer/MFS in mainframe)
+		if(!MFS)
+			to_world("<font size='5' color='red'><b>[src] has no mainframe!</b></font>")
+			return //shit just got real, the mainframe's gone.
 
-	if(sensor_health == 0) //Sensors are offline, PDCs can not target anything.
-		to_world("<font size='5' color='red'><b>[src] has no sensor integrity!</b></font>")
-		return
+		if(MFS.sensor_integrity == 0) //Sensors are offline, PDCs can not target anything.
+			to_world("<font size='5' color='red'><b>[src] has no sensor integrity!</b></font>")
+			return
 
 	if(intercepting)
 		return
@@ -171,17 +171,19 @@
 		intercepting = FALSE
 		return
 
-	if(!mainframe.storage)
-		intercepting = FALSE
-		return
+	for(var/obj/machinery/point_defense/point_defense_computer/MFB in mainframe)
 
-	if(!mainframe.can_use_ammo())
-		intercepting = FALSE
-		return
+		if(!MFB.storage)
+			intercepting = FALSE
+			return
+
+		if(!MFB.can_use_ammo())
+			intercepting = FALSE
+			return
+
+		MFB.use_ammo()
 
 	switch_dispersion(target)
-
-	mainframe.use_ammo()
 
 	dispersion += get_sensor_loss_dispersion()
 
