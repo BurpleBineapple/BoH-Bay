@@ -11,9 +11,10 @@
 	A mouthful to be sure, but you'll not care when it saves your life."
 	icon_state = "pdc_mainframe"
 
-	var/list/sensors = list()	//Our sensors, generally used for measuring integrity of the PDC network.
-	var/list/pdcs = list()		//Our point defense cannons. They're added in the Initialize() call.
-	var/list/storage = list()		//Ammo banks for the ship's defense grid.
+	var/list/sensors = list()			//Our sensors, generally used for measuring integrity of the PDC network.
+	var/list/operable_sensors = list()	//Sensors that are functional. Don't ask.
+	var/list/pdcs = list()				//Our point defense cannons. They're added in the Initialize() call.
+	var/list/storage = list()			//Ammo banks for the ship's defense grid.
 
 	var/sensor_integrity = 100			//This also fucks with targeting accuracy.
 	var/initial_sensors = 0				//num. Basically used to calculate the health of the sensor network.
@@ -39,7 +40,7 @@
 			storage += A
 			A.mainframe = src
 
-	initial_sensors = sensors.len //Set initial_sensors for sensor health comparison. As long as every sensor in the list reports that it's online, sensor integrity is fine.
+	initial_sensors += sensors.len //Set initial_sensors for sensor health comparison. As long as every sensor in the list reports that it's online, sensor integrity is fine.
 
 	update_sensor_status()
 
@@ -89,10 +90,9 @@
 		overlays += image('modular_boh/icon/boh/structures/pdc_mainframe.dmi', "pdc_screen_norm")
 
 /obj/machinery/point_defense/point_defense_computer/proc/update_sensor_status()
-	var/operable_sensors = 0
 
 	for(var/obj/machinery/point_defense/point_defense_sensor/S in sensors)
-		if(S.is_inoperable())
+		if(!S.is_inoperable())
 			continue
 
 		operable_sensors++

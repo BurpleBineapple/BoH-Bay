@@ -55,10 +55,9 @@
 
 	if(intercepting)
 		var/turf/parent_ship_defender = GetConnectedZlevels(get_z(src))
-		var/volume = 15
 		if(!sound_token)
-			sound_token = GLOB.sound_player.PlayLoopingSound(parent_ship_defender, sound_id, working_sound, volume = volume, range = 10, TRUE)
-		sound_token.SetVolume(volume)
+			sound_token = GLOB.sound_player.PlayLoopingSound(parent_ship_defender, sound_id, working_sound, 15, 10, TRUE)
+		sound_token.SetVolume(15)
 
 	else if(sound_token)
 		QDEL_NULL(sound_token)
