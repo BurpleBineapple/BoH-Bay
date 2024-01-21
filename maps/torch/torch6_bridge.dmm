@@ -624,6 +624,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bridge/forestarboard)
+"bp" = (
+/turf/space,
+/area/maintenance/bridge/foreport)
 "bq" = (
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/heads/office/co)
@@ -3602,7 +3605,6 @@
 /obj/machinery/shield_diffuser,
 /obj/machinery/door/airlock/external{
 	frequency = 1379;
-	icon_state = "closed";
 	id_tag = "bridge_eva_outer";
 	locked = 1;
 	name = "Bridge EVA External Access"
@@ -4333,6 +4335,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/aquila/suits)
+"jh" = (
+/obj/floor_decal/corner/blue{
+	dir = 6
+	},
+/obj/floor_decal/corner/blue{
+	dir = 9
+	},
+/obj/machinery/point_defense/ammo_storage/right,
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "jk" = (
 /obj/structure/bed/chair/shuttle/blue{
 	dir = 8
@@ -4549,7 +4561,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/external{
 	frequency = 1379;
-	icon_state = "closed";
 	id_tag = "bridge_eva_inner";
 	locked = 1;
 	name = "Bridge EVA Internal Access"
@@ -4559,7 +4570,6 @@
 "jZ" = (
 /obj/machinery/door/airlock/external{
 	frequency = 1379;
-	icon_state = "closed";
 	id_tag = "bridge_eva_inner";
 	locked = 1;
 	name = "Bridge EVA Internal Access"
@@ -5983,6 +5993,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/security/bridgecheck)
+"oM" = (
+/turf/simulated/floor/plating,
+/area/maintenance/bridge/foreport)
 "oO" = (
 /obj/floor_decal/corner/paleblue/diagonal,
 /obj/structure/cable/green{
@@ -7346,6 +7359,10 @@
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/aquila/medical)
+"sr" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/bridge/foreport)
 "st" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -8295,6 +8312,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/point_defense/ammo_storage/left,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "vj" = (
@@ -8431,7 +8449,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/bridge/foreport)
 "vE" = (
 /obj/structure/lattice,
 /obj/structure/disposalpipe/down{
@@ -8730,7 +8748,6 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering{
-	icon_state = "closed";
 	name = "Bridge Solar Access"
 	},
 /obj/structure/cable{
@@ -8805,7 +8822,6 @@
 	},
 /obj/machinery/door/airlock/external{
 	frequency = 1379;
-	icon_state = "closed";
 	id_tag = "solar_bridge_inner";
 	locked = 1;
 	name = "Engineering External Access"
@@ -8828,7 +8844,6 @@
 /obj/machinery/shield_diffuser,
 /obj/machinery/door/airlock/external{
 	frequency = 1379;
-	icon_state = "closed";
 	id_tag = "solar_bridge_outer";
 	locked = 1;
 	name = "Engineering External Access"
@@ -9787,7 +9802,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/bridge/forestarboard)
 "zz" = (
 /obj/floor_decal/corner/white/full,
 /obj/floor_decal/industrial/outline/yellow,
@@ -9798,6 +9813,20 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/aux_eva)
+"zA" = (
+/obj/structure/catwalk,
+/obj/machinery/pointdefense{
+	initial_id_tag = "torch_primary_pd"
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bridge/foreport)
 "zC" = (
 /obj/structure/table/rack,
 /obj/item/storage/box/PDAs{
@@ -10224,6 +10253,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/heads/office/ce)
+"Bb" = (
+/obj/machinery/point_defense/point_defense_cannon{
+	pixel_y = -16;
+	dir = 8
+	},
+/turf/space,
+/area/maintenance/bridge/foreport)
 "Bc" = (
 /obj/item/reagent_containers/glass/bottle/stoxin,
 /obj/item/reagent_containers/glass/bottle/stoxin,
@@ -12322,6 +12358,15 @@
 /obj/random_multi/single_item/memo_medical,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/office/cmo)
+"Kg" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/bridge/forestarboard)
 "Kh" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -12361,7 +12406,6 @@
 /obj/machinery/door/airlock/external{
 	autoset_access = 0;
 	frequency = 1331;
-	icon_state = "closed";
 	id_tag = "aquila_shuttle_inner";
 	locked = 1;
 	name = "Aquila External Access";
@@ -13042,6 +13086,10 @@
 	},
 /turf/simulated/floor/wood/walnut,
 /area/crew_quarters/heads/office/cl)
+"Ny" = (
+/obj/machinery/point_defense/point_defense_computer,
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "NC" = (
 /turf/simulated/floor/carpet/green,
 /area/crew_quarters/heads/office/cl/backroom)
@@ -14420,7 +14468,6 @@
 /obj/machinery/door/airlock/external{
 	autoset_access = 0;
 	frequency = 1331;
-	icon_state = "closed";
 	id_tag = "aquila_shuttle_dock_inner";
 	locked = 1;
 	name = "Docking Port Airlock";
@@ -14622,7 +14669,6 @@
 /obj/machinery/door/airlock/external{
 	autoset_access = 0;
 	frequency = 1331;
-	icon_state = "closed";
 	id_tag = "aquila_shuttle_dock_outer";
 	locked = 1;
 	name = "Docking Port Airlock";
@@ -14788,6 +14834,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/wood/walnut,
 /area/crew_quarters/heads/office/xo)
+"Vd" = (
+/obj/machinery/point_defense/point_defense_cannon{
+	pixel_y = -16;
+	dir = 8
+	},
+/turf/space,
+/area/maintenance/bridge/forestarboard)
 "Vf" = (
 /obj/floor_decal/scglogo{
 	dir = 4;
@@ -14806,7 +14859,6 @@
 /obj/machinery/door/airlock/external{
 	autoset_access = 0;
 	frequency = 1331;
-	icon_state = "closed";
 	id_tag = "aquila_shuttle_outer";
 	locked = 1;
 	name = "Aquila External Access";
@@ -15115,6 +15167,9 @@
 /obj/paint/hull,
 /turf/simulated/wall/titanium,
 /area/aquila/power)
+"Wz" = (
+/turf/space,
+/area/maintenance/bridge/forestarboard)
 "WK" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -15568,6 +15623,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/hallway/primary/bridge/aft)
+"YU" = (
+/obj/machinery/point_defense/point_defense_sensor,
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "YW" = (
 /obj/floor_decal/industrial/warning{
 	dir = 8;
@@ -22550,26 +22609,26 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Wz
+Vd
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+bp
+bp
+bp
+bp
+bp
+bp
+bp
+bp
+bp
+Bb
 aa
 aa
 aa
@@ -22753,25 +22812,25 @@ af
 af
 af
 af
-aa
-aa
-aa
-aa
+aj
+aj
+Wz
+Wz
 zx
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-zx
-aa
-aa
-aa
-aa
+Wz
+Wz
+Vd
+Wz
+bp
+bp
+Bb
+bp
+bp
+zA
+bp
+bp
+oM
+oM
 tg
 tg
 tg
@@ -22956,23 +23015,23 @@ af
 af
 af
 af
-aa
-aa
-aa
+aj
+aj
+aj
+Kg
+VB
+VB
+VB
+VB
+sr
+sr
+sr
+sr
+sr
 vA
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-vA
-aa
-aa
-aa
+oM
+oM
+oM
 tg
 tg
 tg
@@ -23172,8 +23231,8 @@ Aw
 KG
 Hz
 Es
-aa
-aa
+oM
+oM
 sx
 tg
 tg
@@ -23770,8 +23829,8 @@ Wv
 eP
 cy
 Af
-hn
-hn
+YU
+Ny
 HK
 hn
 hn
@@ -23973,7 +24032,7 @@ eP
 cz
 HC
 jw
-kw
+jh
 lm
 kw
 nH
