@@ -11,6 +11,14 @@
 
 	id_tag = "default"
 
+/obj/machinery/point_defense/point_defense_sensor/Initialize()
+	. = ..()
+	for(var/obj/machinery/point_defense/point_defense_computer/computer in SSmachines.machinery)
+		if(computer.id_tag == id_tag)
+			computer.sensors += src
+			mainframe = computer
+			break
+
 /obj/machinery/point_defense/point_defense_sensor/Destroy()
 	. = ..()
 	mainframe.sensors -= src

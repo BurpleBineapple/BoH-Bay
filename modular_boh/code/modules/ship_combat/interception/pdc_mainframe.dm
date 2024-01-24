@@ -30,11 +30,6 @@
 			pdcs += C
 			C.mainframe = src
 
-	for(var/obj/machinery/point_defense/point_defense_sensor/S in SSmachines.machinery)
-		if(S.id_tag == id_tag)
-			sensors += S
-			S.mainframe = src
-
 	for(var/obj/machinery/point_defense/ammo_storage/A in SSmachines.machinery)
 		if(A.id_tag == id_tag)
 			storage += A
@@ -90,19 +85,18 @@
 		overlays += image('modular_boh/icon/boh/structures/pdc_mainframe.dmi', "pdc_screen_norm")
 
 /obj/machinery/point_defense/point_defense_computer/proc/update_sensor_status()
+	for(var/obj/machinery/point_defense/point_defense_sensor/sensor in sensors)
+		if(!sensor.is_inoperable())
+			if(!(sensor in operable_sensors))
+				operable_sensors+= sensor
+		else if(sensor in operable_sensors)
+			operable_sensors -= sensor
 
-	for(var/obj/machinery/point_defense/point_defense_sensor/S in sensors)
-		if(!S.is_inoperable())
-			continue
-
-		operable_sensors++
-
-	if(!operable_sensors) //no div by zero errors pls, just stop here.
+	if(!length(operable_sensors)) //no div by zero errors pls, just stop here.
 		sensor_integrity = 0
 		return
-
-	if(operable_sensors != initial_sensors) //Uh oh. Something's broken or unpowered.
-		sensor_integrity = round((initial_sensors/operable_sensors)*100)
+	else
+		sensor_integrity = round((length(operable_sensors)/length(sensors)) * 100)
 
 /obj/machinery/point_defense/point_defense_computer/proc/get_miss_chance()
 	if(sensor_integrity == 100)
