@@ -161,8 +161,8 @@
 
 /datum/job/explorer
 	alt_titles = list(
-		"Exploratory Technician" = /singleton/hierarchy/outfit/job/torch/crew/exploration/technician,
-		"Exploratory Medic" = /singleton/hierarchy/outfit/job/torch/crew/exploration/medic
+		"Exploratory Technician",
+		"Exploratory Medic"
 	)
 	allowed_branches = list(/datum/mil_branch/fleet = /singleton/hierarchy/outfit/job/torch/crew/exploration/fleet
 	)
@@ -400,10 +400,11 @@
 		/datum/mil_rank/fleet/e2,
 		/datum/mil_rank/fleet/e3,
 		/datum/mil_rank/fleet/e4,
-		/datum/mil_rank/marine_corps/e1,
+		/datum/mil_rank/fleet/e5,
 		/datum/mil_rank/marine_corps/e2,
 		/datum/mil_rank/marine_corps/e3,
-		/datum/mil_rank/marine_corps/e4
+		/datum/mil_rank/marine_corps/e4,
+		/datum/mil_rank/marine_corps/e5
 	)
 
 /datum/job/chef
@@ -420,6 +421,23 @@
 		/datum/mil_rank/marine_corps/e2,
 		/datum/mil_rank/marine_corps/e3,
 		/datum/mil_rank/marine_corps/e4
+	)
+
+/datum/job/chief_steward
+	alt_titles = list(
+		"Mess Sergeant"
+	)
+	allowed_branches = list(
+		/datum/mil_branch/fleet = /singleton/hierarchy/outfit/job/torch/crew/service/chief_steward/fleet,
+		/datum/mil_branch/marine_corps = /singleton/hierarchy/outfit/job/torch/crew/service/chief_steward/marine
+	)
+	allowed_ranks = list(
+		/datum/mil_rank/fleet/e6,
+		/datum/mil_rank/fleet/e7,
+		/datum/mil_rank/fleet/e8,
+		/datum/mil_rank/marine_corps/e6,
+		/datum/mil_rank/marine_corps/e7,
+		/datum/mil_rank/marine_corps/e8
 	)
 
 /datum/job/crew
@@ -439,6 +457,7 @@
 
 // Supply
 /datum/job/qm
+	title = "Deck Officer"
 	allowed_branches = list(
 		/datum/mil_branch/fleet = /singleton/hierarchy/outfit/job/torch/crew/supply/deckofficer/fleet,
 		/datum/mil_branch/marine_corps = /singleton/hierarchy/outfit/job/torch/crew/supply/deckofficer/marine

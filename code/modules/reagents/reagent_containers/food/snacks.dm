@@ -2795,7 +2795,7 @@
 
 		if(pizza)
 			var/image/pizzaimg = image(pizza.icon, icon_state = pizza.icon_state)
-			if (istype(pizza, /obj/item/reagent_containers/food/snacks/sliceable/variable/pizza))
+			if (istype(pizza, /obj/item/reagent_containers/food/snacks/variable/pizza))
 				var/image/filling = image("food_custom.dmi", icon_state = "pizza_filling")
 				filling.appearance_flags = DEFAULT_APPEARANCE_FLAGS | RESET_COLOR
 				filling.color = pizza.filling_color
@@ -2886,7 +2886,7 @@
 			to_chat(user, SPAN_WARNING("Close \the [box] first!"))
 		return TRUE
 
-	if (istype(I, /obj/item/reagent_containers/food/snacks/sliceable/pizza) || istype(I, /obj/item/reagent_containers/food/snacks/sliceable/variable/pizza))
+	if (istype(I, /obj/item/reagent_containers/food/snacks/sliceable/pizza) || istype(I, /obj/item/reagent_containers/food/snacks/variable/pizza))
 		if (open)
 			if (!pizza)
 				if(!user.unEquip(I, src))

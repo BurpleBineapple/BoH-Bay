@@ -152,7 +152,7 @@
 			return TRUE
 	return FALSE // Return false if the the lace doesn't exist, the lace is busy prompting, no occupant, or the occupant's head (parrent organ) doesn't exist.
 
-/obj/machinery/resleever/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/resleever/use_tool(obj/item/W, mob/living/user, list/click_params)
 	..()
 
 	if(istype(W, /obj/item/organ/internal/stack))

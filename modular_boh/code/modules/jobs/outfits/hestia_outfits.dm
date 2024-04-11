@@ -231,6 +231,11 @@
 	uniform = /obj/item/clothing/under/solgov/utility/army/service
 	shoes = /obj/item/clothing/shoes/dutyboots
 
+/singleton/hierarchy/outfit/job/torch/crew/service/chief_steward/marine
+	name = OUTFIT_JOB_NAME("Chief Steward - Marine Corps")
+	uniform = /obj/item/clothing/under/solgov/utility/army/service
+	shoes = /obj/item/clothing/shoes/dutyboots
+
 /***/
 
 // Supply
@@ -369,7 +374,7 @@
 	id_types = list(/obj/item/card/id/torch/crew/sea)
 	pda_type = /obj/item/modular_computer/pda/heads
 
-//## RESEARCH ROBOTICIST
+//## ROBOTICIST
 
 /singleton/hierarchy/outfit/job/torch/crew/engineering/roboticist
 	name = OUTFIT_JOB_NAME("Roboticist - Torch")

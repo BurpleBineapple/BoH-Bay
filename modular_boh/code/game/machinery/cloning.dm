@@ -171,7 +171,7 @@
 
 
 //Let's unlock this early I guess.  Might be too early, needs tweaking.
-/obj/machinery/clonepod/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/clonepod/use_tool(obj/item/W, mob/living/user, list/click_params)
 	..()
 
 	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer/pda))
@@ -525,7 +525,7 @@
 	src.add_fingerprint(usr)
 	return
 
-/obj/machinery/dna_scannernew/attackby(obj/item/item as obj, mob/user as mob)
+/obj/machinery/dna_scannernew/use_tool(obj/item/item, mob/living/user, list/click_params)
 	..()
 
 	if(istype(item, /obj/item/reagent_containers/glass))

@@ -87,17 +87,17 @@
 	suit has the markings of a squad leader."
 	icon_state = "sl_infantry_rig"
 
-// Depending on how balance goes, these are versions of the Infantry suit more reasonably suited to current damage vars. Still very powerful without maxing out the armor setting.
-
+// Depending on how balance goes, these are versions of the Infantry suit more reasonably suited to current damage vars.
+// 1:1 with mercenary armor.
 /obj/item/rig/infantry/dagon
 	armor = list(
-		melee = ARMOR_MELEE_MAJOR,
+		melee = ARMOR_MELEE_VERY_HIGH,
 		bullet = ARMOR_BALLISTIC_RIFLE,
 		laser = ARMOR_LASER_MAJOR,
-		energy = ARMOR_ENERGY_SMALL,
+		energy = ARMOR_ENERGY_MINOR,
 		bomb = ARMOR_BOMB_RESISTANT,
 		bio = ARMOR_BIO_SHIELDED,
-		rad = ARMOR_RAD_SHIELDED
+		rad = ARMOR_RAD_SMALL
 	)
 	initial_modules = list(
 		/obj/item/rig_module/cooling_unit,
@@ -106,13 +106,13 @@
 
 /obj/item/rig/infantry/sl/dagon
 	armor = list(
-		melee = ARMOR_MELEE_MAJOR,
+		melee = ARMOR_MELEE_VERY_HIGH,
 		bullet = ARMOR_BALLISTIC_RIFLE,
 		laser = ARMOR_LASER_MAJOR,
-		energy = ARMOR_ENERGY_SMALL,
+		energy = ARMOR_ENERGY_MINOR,
 		bomb = ARMOR_BOMB_RESISTANT,
 		bio = ARMOR_BIO_SHIELDED,
-		rad = ARMOR_RAD_SHIELDED
+		rad = ARMOR_RAD_SMALL
 	)
 	initial_modules = list(
 		/obj/item/rig_module/cooling_unit,

@@ -261,6 +261,7 @@ var/const/INF               =(1<<11)
 	alt_titles = list(
 		"Forensics Trainee"
 		)
+	// You're a baby and can't take master combat skills
 	min_skill = list(   SKILL_EVA         = SKILL_TRAINED,
 	                    SKILL_COMBAT      = SKILL_BASIC)
 	max_skill = list(   SKILL_COMBAT      = SKILL_EXPERIENCED,
@@ -313,13 +314,13 @@ var/const/INF               =(1<<11)
 	                    SKILL_COMBAT     = SKILL_BASIC,
 	                    SKILL_WEAPONS    = SKILL_TRAINED)
 
-	max_skill = list(   SKILL_COMBAT       = SKILL_EXPERIENCED,
-	                    SKILL_WEAPONS      = SKILL_EXPERIENCED,
-	                    SKILL_PILOT        = SKILL_EXPERIENCED,
-	                    SKILL_CONSTRUCTION = SKILL_EXPERIENCED,
-	                    SKILL_ELECTRICAL   = SKILL_EXPERIENCED,
-	                    SKILL_ENGINES      = SKILL_EXPERIENCED,
-	                    SKILL_ATMOS        = SKILL_EXPERIENCED)
+	max_skill = list(   SKILL_COMBAT       = SKILL_MAX,
+	                    SKILL_WEAPONS      = SKILL_MAX,
+	                    SKILL_PILOT        = SKILL_MAX,
+	                    SKILL_CONSTRUCTION = SKILL_MAX,
+	                    SKILL_ELECTRICAL   = SKILL_MAX,
+	                    SKILL_ENGINES      = SKILL_MAX,
+	                    SKILL_ATMOS        = SKILL_MAX)
 	skill_points = 24
 
 
@@ -481,13 +482,13 @@ var/const/INF               =(1<<11)
 		/datum/mil_rank/private_security/saare = /singleton/hierarchy/outfit/job/torch/passenger/corporate_bodyguard/saare,
 		/datum/mil_branch/civilian)
 	allowed_ranks = list(/datum/mil_rank/civ/contractor)
-	min_skill = list(   SKILL_BUREAUCRACY = SKILL_BASIC,
+	min_skill = list(   SKILL_BUREAUCRACY = SKILL_TRAINED,
 	                    SKILL_EVA         = SKILL_BASIC,
 	                    SKILL_COMBAT      = SKILL_BASIC,
 	                    SKILL_WEAPONS     = SKILL_BASIC,
 	                    SKILL_FORENSICS   = SKILL_BASIC)
-	max_skill = list(   SKILL_COMBAT      = SKILL_EXPERIENCED,
-	                    SKILL_WEAPONS     = SKILL_EXPERIENCED,
+	max_skill = list(   SKILL_COMBAT      = SKILL_MAX,
+	                    SKILL_WEAPONS     = SKILL_MAX,
 	                    SKILL_FORENSICS   = SKILL_EXPERIENCED)
 	alt_titles = list(
 		"Union Enforcer",
