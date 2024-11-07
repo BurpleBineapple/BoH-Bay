@@ -2489,6 +2489,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/artifact_analyser,
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/petrov/isolation)
 "fE" = (
@@ -3762,15 +3764,6 @@
 /obj/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/exploration)
-"iR" = (
-/obj/floor_decal/industrial/outline/yellow,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/machinery/mech_recharger,
-/mob/living/exosuit/premade/powerloader/old,
-/turf/simulated/floor/tiled/dark/monotile,
-/area/quartermaster/storage)
 "iS" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
@@ -3847,8 +3840,8 @@
 /obj/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/computer/guestpass{
-	pixel_y = 32
+/obj/machinery/light/spot{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
@@ -3967,11 +3960,11 @@
 /obj/random/maintenance/solgov,
 /obj/random/maintenance/solgov,
 /obj/item/tape_roll,
-/obj/machinery/light/small,
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
+/obj/machinery/light/spot,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "jo" = (
@@ -3990,8 +3983,8 @@
 /area/maintenance/fifthdeck/fore)
 "jp" = (
 /obj/floor_decal/industrial/outline/yellow,
-/obj/machinery/light/small,
 /obj/structure/closet/crate/freezer/rations,
+/obj/machinery/light/spot,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/quartermaster/storage)
 "jq" = (
@@ -10895,9 +10888,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/petrov/rnd)
 "zm" = (
-/obj/structure/table/standard,
 /obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/random/tool,
 /obj/machinery/button/blast_door{
 	id_tag = "petrovcell1";
 	name = "Test Chamber Vent";
@@ -10909,6 +10900,8 @@
 	pixel_x = -36;
 	pixel_y = -25
 	},
+/obj/machinery/artifact_harvester,
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white/monotile,
 /area/shuttle/petrov/isolation)
 "zn" = (
@@ -11333,7 +11326,6 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/hangar)
 "Bn" = (
-/obj/machinery/artifact_analyser,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -12606,7 +12598,6 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/petrov/eva)
 "GG" = (
-/obj/machinery/artifact_scanpad,
 /turf/simulated/floor/reinforced,
 /area/shuttle/petrov/cell1)
 "GI" = (
@@ -13705,6 +13696,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/machinery/artifact_scanpad,
 /turf/simulated/floor/reinforced,
 /area/shuttle/petrov/cell1)
 "KQ" = (
@@ -14300,9 +14292,6 @@
 "MW" = (
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = 32
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
@@ -16159,13 +16148,9 @@
 /obj/item/stack/material/glass/reinforced{
 	amount = 30
 	},
-/obj/item/stack/material/glass/reinforced{
-	amount = 30
-	},
-/obj/item/stack/material/glass/reinforced{
-	amount = 30
-	},
 /obj/floor_decal/industrial/outline/yellow,
+/obj/item/stack/material/glass,
+/obj/item/stack/material/glass,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/quartermaster/storage)
 "UM" = (
@@ -38391,7 +38376,7 @@ Fk
 Em
 Em
 Em
-Em
+hy
 hE
 hE
 Em
@@ -38590,8 +38575,8 @@ lh
 Vz
 xl
 TL
-hy
-iR
+Em
+ou
 ou
 oy
 if

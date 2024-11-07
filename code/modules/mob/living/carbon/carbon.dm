@@ -30,6 +30,7 @@
 		R.clear_reagents()
 	set_nutrition(400)
 	set_hydration(400)
+	stop_allergy()
 	..()
 
 /mob/living/carbon/Move(NewLoc, direct)
@@ -170,6 +171,7 @@
 
 
 /mob/living/carbon/swap_hand()
+	. = ..()
 	hand = !hand
 	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
 		if(hand)	//This being 1 means the left hand is in use

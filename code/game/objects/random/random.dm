@@ -264,7 +264,7 @@
 /obj/random/drinkbottle
 	name = "random drink"
 	desc = "This is a random drink."
-	icon = 'icons/obj/food/drinks.dmi'
+	icon = 'icons/obj/food/drinks/bottles.dmi'
 	icon_state = "whiskeybottle"
 
 /obj/random/drinkbottle/spawn_choices()
@@ -445,19 +445,22 @@
 	icon_state = "greenglow"
 
 /obj/random/trash/spawn_choices()
-	return list(/obj/item/remains/lizard,
-				/obj/decal/cleanable/blood/gibs/robot,
-				/obj/decal/cleanable/blood/oil,
-				/obj/decal/cleanable/blood/oil/streak,
-				/obj/decal/cleanable/spiderling_remains,
-				/obj/item/remains/mouse,
-				/obj/decal/cleanable/vomit,
-				/obj/decal/cleanable/blood/splatter,
-				/obj/decal/cleanable/ash,
-				/obj/decal/cleanable/generic,
-				/obj/decal/cleanable/flour,
-				/obj/decal/cleanable/dirt,
-				/obj/item/remains/robot)
+	return list(
+		/obj/item/remains/lizard,
+		/obj/decal/cleanable/blood/gibs/robot,
+		/obj/decal/cleanable/blood/oil,
+		/obj/decal/cleanable/blood/oil/streak,
+		/obj/decal/cleanable/spiderling_remains,
+		/obj/item/remains/mouse,
+		/obj/decal/cleanable/vomit,
+		/obj/decal/cleanable/blood/splatter,
+		/obj/decal/cleanable/ash,
+		/obj/decal/cleanable/generic,
+		/obj/decal/cleanable/flour,
+		/obj/decal/cleanable/dirt,
+		/obj/item/remains/robot,
+		/obj/item/material/shard/caltrop/tack
+	)
 
 
 /obj/random/closet //A couple of random closets to spice up maint
@@ -1295,7 +1298,7 @@ var/global/list/multi_point_spawns
 /obj/random/mre
 	name = "random MRE"
 	desc = "This is a random single MRE."
-	icon = 'icons/obj/food/food.dmi'
+	icon = 'icons/obj/food/mre.dmi'
 	icon_state = "mre"
 
 /obj/random/mre/spawn_choices()
@@ -1354,6 +1357,7 @@ var/global/list/multi_point_spawns
 /obj/random/mre/drink
 	name = "random MRE drink"
 	desc = "This is a random drink for MREs."
+	icon = 'icons/obj/food/condiment.dmi'
 	icon_state = "packet_small"
 
 /obj/random/mre/drink/spawn_choices()
@@ -1368,22 +1372,28 @@ var/global/list/multi_point_spawns
 /obj/random/mre/spread
 	name = "random MRE spread"
 	desc = "This is a random spread packet for MREs."
+	icon = 'icons/obj/food/condiment.dmi'
 	icon_state = "packet_small"
 
 /obj/random/mre/spread/spawn_choices()
 	return list(/obj/item/reagent_containers/food/condiment/small/packet/jelly,
-				/obj/item/reagent_containers/food/condiment/small/packet/honey)
+				/obj/item/reagent_containers/food/condiment/small/packet/honey,
+				/obj/item/reagent_containers/food/condiment/small/packet/peanutbutter,
+				/obj/item/reagent_containers/food/condiment/small/packet/choconutspread)
 
 /obj/random/mre/spread/vegan
 	name = "random vegan MRE spread"
 	desc = "This is a random vegan spread packet for MREs."
 
 /obj/random/mre/spread/vegan/spawn_choices()
-	return list(/obj/item/reagent_containers/food/condiment/small/packet/jelly)
+	return list(/obj/item/reagent_containers/food/condiment/small/packet/jelly,
+				/obj/item/reagent_containers/food/condiment/small/packet/peanutbutter,
+				/obj/item/reagent_containers/food/condiment/small/packet/choconutspread)
 
 /obj/random/mre/sauce
 	name = "random MRE sauce"
 	desc = "This is a random sauce packet for MREs."
+	icon = 'icons/obj/food/condiment.dmi'
 	icon_state = "packet_small"
 
 /obj/random/mre/sauce/spawn_choices()
@@ -1447,7 +1457,7 @@ var/global/list/multi_point_spawns
 
 /obj/random/single/cola
 	name = "randomly spawned cola"
-	icon = 'icons/obj/food/drinks.dmi'
+	icon = 'icons/obj/food/drinks/cans.dmi'
 	icon_state = "cola"
 	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 

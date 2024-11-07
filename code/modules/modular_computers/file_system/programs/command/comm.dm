@@ -141,11 +141,11 @@
 				if(announcment_cooldown)
 					to_chat(usr, "Please allow at least one minute to pass between announcements")
 					return
-				var/input = input(usr, "Please write a message to announce to the [station_name()].", "Priority Announcement") as null|message
+				var/input = sanitize(input(usr, "Please write a message to announce to the [station_name()].", "Priority Announcement") as null|message, extra = FALSE)
 				if(!input || !can_still_topic())
 					return
 				var/affected_zlevels = GetConnectedZlevels(get_host_z())
-				crew_announcement.Announce(input, zlevels = affected_zlevels)
+				crew_announcement.Announce(input, msg_sanitized = TRUE, zlevels = affected_zlevels)
 				announcment_cooldown = 1
 				spawn(600)//One minute cooldown
 					announcment_cooldown = 0
@@ -362,7 +362,7 @@ var/global/last_message_id = 0
 		return
 
 	if(evacuation_controller.call_evacuation(user, _emergency_evac = emergency))
-		log_and_message_admins("[user? key_name(user) : "Autotransfer"] has called the shuttle.")
+		log_and_message_admins("has called the shuttle.", user)
 
 /proc/init_autotransfer()
 

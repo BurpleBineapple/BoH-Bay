@@ -287,9 +287,9 @@
 	var/tag_x
 	var/package_type = "parcel"
 
-/obj/item/smallDelivery/Initialize(mapload, obj/item/parcel, wrap_type)
+/obj/item/smallDelivery/Initialize(mapload, obj/item/parcel, wrap_type = "parcel")
 	. = ..()
-	if (!parcel || !isitem(parcel) || !wrap_type)
+	if (!parcel || !isitem(parcel))
 		return INITIALIZE_HINT_QDEL
 
 	wrapped = parcel
@@ -550,7 +550,7 @@
 
 	var/mob/living/L = AM
 	if (istype(L) && L.ckey)
-		log_and_message_admins("has flushed themselves down \the [src].", L)
+		log_and_message_admins("has flushed themselves down \the [src].", L, src)
 	if(istype(AM, /obj))
 		var/obj/O = AM
 		O.forceMove(src)

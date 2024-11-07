@@ -65,34 +65,15 @@
 			else
 				to_chat(user, "It is configured to print bulbs in this color: <span style='color: [lighting_tone];'>■</span>")
 
-/obj/item/device/lightreplacer/resolve_attackby(atom/A, mob/user)
 
-	//Check for lights in a container, refilling our charges.
-	if(istype(A, /obj/item/storage))
-		var/obj/item/storage/S = A
-		var/amt_inserted = 0
-		var/turf/T = get_turf(user)
-		for(var/obj/item/light/L in S.contents)
-			if(!user.stat && src.uses < src.max_uses && L.status == LIGHT_OK)
-				src.AddUses(1)
-				amt_inserted++
-				S.remove_from_storage(L, T, 1)
-				qdel(L)
-		S.finish_bulk_removal()
-		if(amt_inserted)
-			to_chat(user, "You insert [amt_inserted] light\s into \The [src]. It has [uses] light\s remaining.")
-			add_fingerprint(user)
-			return
+/obj/item/device/lightreplacer/use_before(atom/target, mob/living/user, click_parameters)
+	// Replace light bulbs
+	if (istype(target, /obj/machinery/light))
+		var/obj/machinery/light/fixture = target
+		ReplaceLight(fixture, user)
+		return TRUE
 
-	//Actually replace the light.
-	if(istype(A, /obj/machinery/light))
-		var/obj/machinery/light/L = A
-		if(isliving(user))
-			var/mob/living/U = user
-			ReplaceLight(L, U)
-			add_fingerprint(user)
-			return
-	. = ..()
+	return ..()
 
 
 /obj/item/device/lightreplacer/use_tool(obj/item/tool, mob/user, list/click_params)
@@ -114,6 +95,29 @@
 			SPAN_NOTICE("You add \the [tool] to \the [src]. It now has [uses] light\s remaining.")
 		)
 		qdel(tool)
+		return TRUE
+
+	// Container - Add lights
+	if (istype(tool, /obj/item/storage))
+		if (uses >= max_uses)
+			USE_FEEDBACK_FAILURE("\The [src] is full.")
+			return TRUE
+		var/obj/item/storage/storage = tool
+		var/amt_inserted = 0
+		for (var/obj/item/light/light in storage.contents)
+			if (uses < max_uses && light.status == LIGHT_OK)
+				AddUses(1)
+				amt_inserted++
+				storage.remove_from_storage(light, src, TRUE)
+				qdel(light)
+		if (!amt_inserted)
+			USE_FEEDBACK_FAILURE("\The [tool] has no lights to add to \the [src].")
+			return TRUE
+		storage.finish_bulk_removal()
+		user.visible_message(
+			SPAN_NOTICE("\The [user] transfers some lights from \a [tool] to \a [src]."),
+			SPAN_NOTICE("You insert [amt_inserted] light\s from \the [tool] to \the [src]. It now has [uses] light\s remaining.")
+		)
 		return TRUE
 
 	// Material Stack - Add lights
