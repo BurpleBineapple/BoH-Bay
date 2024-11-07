@@ -326,7 +326,7 @@ armour attachments
 	icon = 'maps/torch/icons/obj/obj_accessories_solgov.dmi'
 	accessory_icons = list(slot_w_uniform_str = 'maps/torch/icons/mob/onmob_accessories_solgov.dmi', slot_wear_suit_str = 'maps/torch/icons/mob/onmob_accessories_solgov.dmi')
 	icon_state = "solflag"
-	slot = ACCESSORY_SLOT_ARMOR_M
+	slot = ACCESSORY_SLOT_ARMOR_MISC
 
 /obj/item/clothing/accessory/armor_tag/solgov/ec
 	name = "\improper Expeditionary Corps crest"
@@ -368,7 +368,7 @@ department tags
 	name = "department insignia"
 	desc = "Insignia denoting assignment to a department. These appear blank."
 	icon_state = "dept_exped"
-	slot = ACCESSORY_SLOT_DEPT
+	slot = ACCESSORY_SLOT_INSIGNIA
 	sprite_sheets = list(
 		SPECIES_UNATHI = 'icons/mob/species/unathi/onmob_accessories_sol_unathi.dmi'
 		)

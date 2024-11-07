@@ -133,7 +133,7 @@
 		energy = ARMOR_ENERGY_SMALL,
 		bomb = ARMOR_BOMB_PADDED
 		)
-	slot = ACCESSORY_SLOT_ARMOR_A
+	slot = ACCESSORY_SLOT_ARMOR_ARMS
 
 /obj/item/clothing/accessory/arm_guards/tan/tactical
 	icon = 'modular_boh/icons/obj/clothing/obj_modular_armor.dmi'
@@ -181,7 +181,7 @@
 		energy = ARMOR_ENERGY_SMALL,
 		bomb = ARMOR_BOMB_PADDED
 		)
-	slot = ACCESSORY_SLOT_ARMOR_L
+	slot = ACCESSORY_SLOT_ARMOR_LEGS
 
 
 /obj/item/clothing/accessory/leg_guards/tan/tactical

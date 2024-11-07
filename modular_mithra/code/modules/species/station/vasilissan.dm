@@ -21,10 +21,8 @@
 	sexybits_location = BP_GROIN //this is possibly my favorite variable just because of how out of place it is. - cebu | what the hell does it even do -tori | Basically it just defines where you can hit them for massive (pain) damage. An entire variable dedicated to nutshots. -cebu  | do these guys even have junk in their groin??? -cebu
 
 
-	available_cultural_info = list( //I can do ANYTHING! Placeholder until the loreboys come and figure out what Vasilissans do | did it -bear
+	available_cultural_info = list(
 		TAG_CULTURE = list(
-			CULTURE_HUMAN,
-			CULTURE_HUMAN_VATGROWN,
 			CULTURE_HUMAN_MARTIAN,
 			CULTURE_HUMAN_MARSTUN,
 			CULTURE_HUMAN_LUNAPOOR,
@@ -32,12 +30,34 @@
 			CULTURE_HUMAN_VENUSIAN,
 			CULTURE_HUMAN_VENUSLOW,
 			CULTURE_HUMAN_BELTER,
-			CULTURE_HUMAN_PLUTO,
+			CULTURE_HUMAN_KUIPERI,
+			CULTURE_HUMAN_KUIPERO,
+			CULTURE_HUMAN_MAGNITKA,
 			CULTURE_HUMAN_EARTH,
+			CULTURE_HUMAN_CETIN,
+			CULTURE_HUMAN_CETIS,
+			CULTURE_HUMAN_CETII,
 			CULTURE_HUMAN_SPACER,
-			CULTURE_HUMAN_CONFEDC,
+			CULTURE_HUMAN_OFFWORLD,
+			CULTURE_HUMAN_THEIA,
+			CULTURE_HUMAN_CONFED_TERRA,
+			CULTURE_HUMAN_CONFED_ZEMLYA,
+			CULTURE_HUMAN_CONFED_SESTRIS,
+			CULTURE_HUMAN_CONFED_PUTKARI,
+			CULTURE_HUMAN_CONFED_ALTAIR,
+			CULTURE_HUMAN_CONFED_PENGLAI,
+			CULTURE_HUMAN_CONFED_PROVIDENCE,
+			CULTURE_HUMAN_CONFED_VALY,
 			CULTURE_HUMAN_CONFEDO,
-			CULTURE_HUMAN_OTHER,
-			CULTURE_SYMBIOTIC
+			CULTURE_HUMAN_FOSTER,
+			CULTURE_HUMAN_PIRXL,
+			CULTURE_HUMAN_PIRXB,
+			CULTURE_HUMAN_PIRXF,
+			CULTURE_HUMAN_TADMOR,
+			CULTURE_HUMAN_IOLAUS,
+			CULTURE_HUMAN_BRAHE,
+			CULTURE_HUMAN_EOS,
+			CULTURE_HUMAN_GAIAN,
+			CULTURE_HUMAN_OTHER
 		)
 	)
